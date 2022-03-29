@@ -1,0 +1,56 @@
+<form [formGroup]="form">
+  <div class="form-group">
+    <label for="oldPassword">Old Password</label>
+    <input formControlName="oldPassword" type="password" class="form-control" />
+    <div
+    *ngIf="oldPassword?.invalid && oldPassword?.touched"
+    class="alert alert-danger"
+  >
+    <div *ngIf="oldPassword?.errors?.['required']">Old passwor required.</div>
+    <div *ngIf="oldPassword?.errors?.['validateOldPassword']">
+      Old passwor incorrect.
+    </div>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+    <label for="newPassword">New Password</label>
+    <input formControlName="newPassword" type="password" class="form-control" />
+    <div
+      *ngIf="newPassword?.touched && newPassword?.invalid"
+      class="alert alert-danger"
+    >
+      <div *ngIf="newPassword?.errors?.['required']">New passwor required.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="conformPassword">Conform Password</label>
+    <input
+      formControlName="conformPassword"
+      type="password"
+      class="form-control"
+    />
+    <div
+      *ngIf="conformPassword?.touched && conformPassword?.invalid"
+      class="alert alert-danger"
+    >
+      <div *ngIf="conformPassword?.errors?.['required']">
+        Conform passwor required.
+      </div>
+    </div>
+  </div>
+
+  <div
+    *ngIf="
+      !(newPassword?.value === conformPassword?.value) &&
+      conformPassword?.touched
+    "
+    class="alert alert-danger"
+  >
+    Password dosn't match.
+  </div>
+
+  <button type="submit" class="btn btn-primary">Change Password</button>
+</form>

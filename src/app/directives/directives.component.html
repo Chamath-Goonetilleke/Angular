@@ -1,0 +1,77 @@
+<!-- ngIF -->
+<div *ngIf="courses.length>0;then courseList else noCourses"></div>
+<ng-template #courseList>
+  <div>List of courses</div>                         <!--using ng-templates-->
+</ng-template>
+<ng-template #noCourses>
+  <div>No courses yet</div>
+</ng-template>
+
+
+<div [hidden]="(courses.length==0)">
+  List of courses                                     <!--using property binding -->
+</div>
+<div [hidden]="(courses.length>0)" >
+  No courses yet
+</div>
+
+<!-- ngSwitch -->
+
+<ul class="nav nav-pills nav-fill">
+  <li class="nav-item" >
+    <a class="nav-link"  [class.active]="viewMode == 'map'" (click)="viewMode='map'">Map View</a></li>
+  <li class="nav-item" >
+    <a class="nav-link"[class.active]="viewMode == 'list'"(click)="viewMode='list'">List View</a></li>
+</ul>
+<div [ngSwitch]="viewMode">
+  <div *ngSwitchCase="'map'">Map view Content </div>
+  <div *ngSwitchCase="'list'">List view Content </div>
+  <div *ngSwitchDefault>Otherwise</div>
+</div>
+
+<!-- ngFor -->
+<button (click)="loadCourses()">Load Courses</button>
+<ul>
+  <li *ngFor="let course of course; index as i; even as isEven">
+    {{i}} - {{course.name}} <span *ngIf="isEven">(Even)</span>
+  </li>
+</ul>
+
+<!-- ngClass -->
+
+                              <!-- using ClassBinfing -->
+<!-- <span 
+           (click)="onClick()" 
+           class="bi" 
+           [class.bi-star]="isFav" 
+           [class.bi-star-fill]="!isFav">
+      </span> -->
+
+                               <!-- using ngClasss -->
+<span (click)="onClick()" 
+      class="bi"
+      [ngClass]="{ 
+      'bi-star':isFav,
+      'bi-star-fill':!isFav
+     }" >
+</span>
+
+<!-- ngStyle -->
+                <!-- Using StyleBinding -->
+<button [style.background]="canSave ? 'skyblue' : 'red'"
+        [style.color]="canSave ? 'red' : 'skyblue'">
+        Click
+</button><br>
+
+              <!-- Using ngStyle -->
+<button 
+          [ngStyle]="{
+          background:canSave ? 'skyblue' : 'red',
+          color: canSave ? 'red' : 'skyblue'
+        }">
+  Click
+</button>
+
+<!-- custom Directives -->
+
+<input type="text" [appInputFormat]="'uppercase'">

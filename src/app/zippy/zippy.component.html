@@ -1,0 +1,13 @@
+<div class="zippy" (click)="onClick()">
+  <div class="zippy-heading" [class.expanded]="isActive" >
+    {{title}}
+    <i class="bi" 
+         [ngClass]="{
+           'bi-caret-down-fill': isActive,
+           'bi-caret-up-fill': !(isActive)
+         }"></i>
+  </div>
+  <div class="zippy-body" *ngIf="isActive ">
+    <ng-content></ng-content>
+  </div>
+</div>

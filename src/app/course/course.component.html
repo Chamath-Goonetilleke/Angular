@@ -1,0 +1,17 @@
+<h2>{{ ' Name: ' + getName() }}</h2>
+<h2>Title: {{ title | uppercase}}</h2> <!--pipes-->
+<ul>
+  <li *ngFor="let course of courses">{{ course }}</li>
+</ul>
+<div (click)="onDivClick()">
+  <button (click)="onSave($event)" [style.backgroundColor]="isActive ? 'blue' : 'red'" class="btn btn-primary">
+    SAVE
+  </button>
+
+  
+  <input #email (keyup.enter)="onKeyUp(email.value)" /><br><!--cant change the value-->
+  <input [(ngModel)]="name" (keyup.enter)="onKeyUp2()"> <!-- Two eay binding can change the value -->
+  <p>{{text | summary:10 }}</p>
+  
+</div>
+
