@@ -12,7 +12,7 @@
           />
         </div>
         <div class="detail">
-          <span>{{ follower.login }}</span>
+          <a [routerLink]="['/followers',follower.id,follower.login]">{{ follower.login }}</a>
           <br />
           <a href={{follower.html_url}}>{{follower.html_url}}</a>
         </div>

@@ -2,7 +2,7 @@ import { ErrorHandler } from '@angular/core';
 import { SignupFormComponent } from './reactive-forms/signup-form.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CourseComponent } from './course/course.component';
@@ -28,6 +28,11 @@ import { PostService } from './services/post.service';
 import { AppErrorHandler } from './common/app-error-handler';
 import { HttpExerciseComponent } from './http-exercise/http-exercise.component';
 import { FollowersService } from './services/followers.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -49,16 +54,25 @@ import { FollowersService } from './services/followers.service';
     FormArraysComponent,
     FormExercise2Component,
     PostsComponent,
-    HttpExerciseComponent
-   
+    HttpExerciseComponent,
+    NavbarComponent,
+    HomeComponent,
+    GithubProfileComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
-  
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'followers/:id/:username', component: GithubProfileComponent },
+      { path: 'followers', component: HttpExerciseComponent },
+      { path: 'posts', component: PostsComponent },
+      { path: '**', component: NotFoundComponent },
+    ]),
   ],
   providers: [
     HttpClient,
@@ -66,8 +80,8 @@ import { FollowersService } from './services/followers.service';
     AuthorService,
     PostService,
     FollowersService,
-    {provide: ErrorHandler, useClass:AppErrorHandler}
+    { provide: ErrorHandler, useClass: AppErrorHandler },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
