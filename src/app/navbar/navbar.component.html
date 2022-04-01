@@ -1,7 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <div  id="navbarNav">
+    <div [style.backgroundColor]="backGround" id="navbarNav">
       <ul class="navbar-nav">
+        <li routerLinkActive="active current">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
         <li routerLinkActive="active current">
           <a class="nav-link active" routerLink="/followers" [queryParams]="{page:1, order:'newest'}">Followers</a>
         </li>
