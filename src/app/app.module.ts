@@ -33,6 +33,10 @@ import { HomeComponent } from './home/home.component';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
+import { TreeComponent } from './tree/tree.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -59,6 +63,7 @@ import { RouterModule } from '@angular/router';
     HomeComponent,
     GithubProfileComponent,
     NotFoundComponent,
+    TreeComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,8 +76,12 @@ import { RouterModule } from '@angular/router';
       { path: 'followers/:id/:username', component: GithubProfileComponent },
       { path: 'followers', component: HttpExerciseComponent },
       { path: 'posts', component: PostsComponent },
+      { path: 'tree', component: TreeComponent },
       { path: '**', component: NotFoundComponent },
     ]),
+    BrowserAnimationsModule,
+    MatTreeModule,
+    MatIconModule,
   ],
   providers: [
     HttpClient,
