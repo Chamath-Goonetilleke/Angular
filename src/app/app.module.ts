@@ -37,6 +37,11 @@ import { TreeComponent } from './tree/tree.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
+import { ModalViewComponent } from './modal-view/modal-view.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalMainComponent } from './modal-main/modal-main.component';
+import { MatButtonModule } from '@angular/material/button';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -64,6 +69,8 @@ import { MatIconModule } from '@angular/material/icon';
     GithubProfileComponent,
     NotFoundComponent,
     TreeComponent,
+    ModalViewComponent,
+    ModalMainComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,11 +84,15 @@ import { MatIconModule } from '@angular/material/icon';
       { path: 'followers', component: HttpExerciseComponent },
       { path: 'posts', component: PostsComponent },
       { path: 'tree', component: TreeComponent },
+      { path: 'add_role', component: ModalMainComponent },
       { path: '**', component: NotFoundComponent },
     ]),
     BrowserAnimationsModule,
     MatTreeModule,
     MatIconModule,
+    MatDialogModule,
+    MatButtonModule,
+    DragDropModule,
   ],
   providers: [
     HttpClient,
